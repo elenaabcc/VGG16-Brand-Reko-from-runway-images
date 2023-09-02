@@ -5,3 +5,5 @@ image_classification_model.h5
 image_classification_model_100_1.h5
 image_classification_model_10_1.h5
 *.h5
+!vgg16_100epoch_bkg.h5
+!vgg16_200epoch_no_bkg.h5
