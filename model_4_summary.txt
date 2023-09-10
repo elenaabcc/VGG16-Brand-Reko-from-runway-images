@@ -1,0 +1,69 @@
+Model: "model_4"
+__________________________________________________________________________________________________
+ Layer (type)                Output Shape                 Param #   Connected to                  
+==================================================================================================
+ input_5 (InputLayer)        [(None, 224, 224, 3)]        0         []                            
+                                                                                                  
+ block1_conv1 (Conv2D)       (None, 224, 224, 64)         1792      ['input_5[0][0]']             
+                                                                                                  
+ block1_conv2 (Conv2D)       (None, 224, 224, 64)         36928     ['block1_conv1[0][0]']        
+                                                                                                  
+ block1_pool (MaxPooling2D)  (None, 112, 112, 64)         0         ['block1_conv2[0][0]']        
+                                                                                                  
+ block2_conv1 (Conv2D)       (None, 112, 112, 128)        73856     ['block1_pool[0][0]']         
+                                                                                                  
+ block2_conv2 (Conv2D)       (None, 112, 112, 128)        147584    ['block2_conv1[0][0]']        
+                                                                                                  
+ block2_pool (MaxPooling2D)  (None, 56, 56, 128)          0         ['block2_conv2[0][0]']        
+                                                                                                  
+ block3_conv1 (Conv2D)       (None, 56, 56, 256)          295168    ['block2_pool[0][0]']         
+                                                                                                  
+ block3_conv2 (Conv2D)       (None, 56, 56, 256)          590080    ['block3_conv1[0][0]']        
+                                                                                                  
+ block3_conv3 (Conv2D)       (None, 56, 56, 256)          590080    ['block3_conv2[0][0]']        
+                                                                                                  
+ block3_pool (MaxPooling2D)  (None, 28, 28, 256)          0         ['block3_conv3[0][0]']        
+                                                                                                  
+ block4_conv1 (Conv2D)       (None, 28, 28, 512)          1180160   ['block3_pool[0][0]']         
+                                                                                                  
+ block4_conv2 (Conv2D)       (None, 28, 28, 512)          2359808   ['block4_conv1[0][0]']        
+                                                                                                  
+ block4_conv3 (Conv2D)       (None, 28, 28, 512)          2359808   ['block4_conv2[0][0]']        
+                                                                                                  
+ conv2d_2 (Conv2D)           (None, 28, 28, 64)           294976    ['block4_conv3[0][0]']        
+                                                                                                  
+ dense_6 (Dense)             (None, 28, 28, 1)            65        ['conv2d_2[0][0]']            
+                                                                                                  
+ tf.math.multiply_2 (TFOpLa  (None, 28, 28, 1)            0         ['dense_6[0][0]']             
+ mbda)                                                                                            
+                                                                                                  
+ softmax_2 (Softmax)         (None, 28, 28, 1)            0         ['tf.math.multiply_2[0][0]']  
+                                                                                                  
+ multiply_2 (Multiply)       (None, 28, 28, 512)          0         ['block4_conv3[0][0]',        
+                                                                     'softmax_2[0][0]']           
+                                                                                                  
+ block4_pool (MaxPooling2D)  (None, 14, 14, 512)          0         ['multiply_2[0][0]']          
+                                                                                                  
+ block5_conv1 (Conv2D)       (None, 14, 14, 512)          2359808   ['block4_pool[1][0]']         
+                                                                                                  
+ block5_conv2 (Conv2D)       (None, 14, 14, 512)          2359808   ['block5_conv1[1][0]']        
+                                                                                                  
+ block5_conv3 (Conv2D)       (None, 14, 14, 512)          2359808   ['block5_conv2[1][0]']        
+                                                                                                  
+ block5_pool (MaxPooling2D)  (None, 7, 7, 512)            0         ['block5_conv3[1][0]']        
+                                                                                                  
+ global_max_pooling2d_2 (Gl  (None, 512)                  0         ['block5_pool[1][0]']         
+ obalMaxPooling2D)                                                                                
+                                                                                                  
+ dense_7 (Dense)             (None, 512)                  262656    ['global_max_pooling2d_2[0][0]
+                                                                    ']                            
+                                                                                                  
+ dropout_2 (Dropout)         (None, 512)                  0         ['dense_7[0][0]']             
+                                                                                                  
+ dense_8 (Dense)             (None, 6)                    3078      ['dropout_2[0][0]']           
+                                                                                                  
+==================================================================================================
+Total params: 15275463 (58.27 MB)
+Trainable params: 560775 (2.14 MB)
+Non-trainable params: 14714688 (56.13 MB)
+__________________________________________________________________________________________________
